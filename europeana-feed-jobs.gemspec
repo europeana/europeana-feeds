@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['lutz.biedinger@gmail.com']
 
   spec.summary       = 'This gem retrieves rss feeds and caches their contents'
-  spec.description   = ''
+  spec.description   = 'Rails Engine to retrieve and cache rss feeds'
   spec.homepage      = 'https://github.org/europeana/europeana-feed-jobs'
   spec.license       = 'EUPL-1.1'
 
