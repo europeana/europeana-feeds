@@ -9,6 +9,7 @@
 /spec/reports/
 /spec/dummy/db/*
 /spec/dummy/log/*
+/spec/dummy/tmp/*
 /tmp/
 /*.gem
 

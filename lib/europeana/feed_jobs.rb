@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'active_job'
+require 'feedjira'
 require 'europeana/feed_jobs/engine'
 
 module Europeana

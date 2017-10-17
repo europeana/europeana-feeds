@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe FeedHelper do
+RSpec.describe Europeana::FeedJobs::FeedHelper do
   let(:feed_object) { double('dummy_feed_object', entries: %w(dummy_entry_1 dummy_entry_2)) }
   describe '#feed_entries' do
     it 'retrieves the cached feed' do

@@ -7,6 +7,7 @@ Coveralls.wear! unless Coveralls.will_run?.nil?
 
 require File.expand_path('../dummy/config/environment.rb', __FILE__)
 require 'rspec/rails'
+require 'webmock_helper'
 
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
