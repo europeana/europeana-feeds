@@ -1,4 +1,4 @@
-# europeana-i18n
+# europeana-feed-jobs
 
 [![Build Status](https://travis-ci.org/europeana/europeana-feed-jobs.svg?branch=develop)](https://travis-ci.org/europeana/europeana-feed-jobs) [![Code Climate](https://codeclimate.com/github/europeana/europeana-feed-jobs/badges/gpa.svg)](https://codeclimate.com/github/europeana/europeana-feed-jobs)
 
