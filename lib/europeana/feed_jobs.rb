@@ -2,10 +2,10 @@
 
 require 'active_job'
 require 'feedjira'
-require 'europeana/feed_jobs/engine'
+require 'europeana/feeds/engine'
 
 module Europeana
-  module FeedJobs
-    autoload :FeedJob, 'europeana/feed_jobs/feed_job'
+  module Feeds
+    autoload :FetchJob, 'europeana/feeds/fetch_job'
   end
 end

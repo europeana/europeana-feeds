@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module Europeana
-  module FeedJobs
+  module Feeds
     class Engine < Rails::Engine
-      isolate_namespace Europeana::FeedJobs
+      isolate_namespace Europeana::Feeds
 
-      engine_name 'europeana_feed_jobs'
+      engine_name 'europeana_feeds'
 
       config.generators do |g|
         g.test_framework :rspec

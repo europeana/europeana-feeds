@@ -2,8 +2,8 @@
 
 require 'spec_helper'
 
-RSpec.describe Europeana::FeedJobs do
+RSpec.describe Europeana::Feeds do
   it 'has a version number' do
-    expect(Europeana::FeedJobs::VERSION).not_to be nil
+    expect(Europeana::Feeds::VERSION).not_to be nil
   end
 end

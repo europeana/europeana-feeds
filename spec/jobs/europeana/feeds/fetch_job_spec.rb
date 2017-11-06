@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe Europeana::FeedJobs::FeedJob do
+RSpec.describe Europeana::Feeds::FetchJob do
   before(:each) do
     ActiveJob::Base.queue_adapter = :test
     stub_request(:get, url).
@@ -13,23 +13,23 @@ RSpec.describe Europeana::FeedJobs::FeedJob do
 
   let(:url) { 'http://blog.europeana.eu/all' }
   let(:rss_body) do
-    <<-END
-<?xml version="1.0"?>
-<rss version="2.0">
-<channel>
-  <title>Example Channel</title>
-  <link>http://example.com/</link>
-  <description>My example channel</description>
-  <lastBuildDate>Mon, 22 May 2017 00:00:00 +0000</lastBuildDate>
-  <item>
-     <title>Example item</title>
-     <link>http://example.com/item</link>
-     <description>About the example item...</description>
-     <content:encoded><![CDATA[<img src="http://www.example.com/image.png"/>]]></content:encoded>
-     <pubDate>Mon, 22 May 2017 00:00:00 +0000</pubDate>
-  </item>
-</channel>
-</rss>
+    <<~END
+      <?xml version="1.0"?>
+      <rss version="2.0">
+      <channel>
+        <title>Example Channel</title>
+        <link>http://example.com/</link>
+        <description>My example channel</description>
+        <lastBuildDate>Mon, 22 May 2017 00:00:00 +0000</lastBuildDate>
+        <item>
+           <title>Example item</title>
+           <link>http://example.com/item</link>
+           <description>About the example item...</description>
+           <content:encoded><![CDATA[<img src="http://www.example.com/image.png"/>]]></content:encoded>
+           <pubDate>Mon, 22 May 2017 00:00:00 +0000</pubDate>
+        </item>
+      </channel>
+      </rss>
     END
   end
   subject { described_class.new }
@@ -57,43 +57,9 @@ RSpec.describe Europeana::FeedJobs::FeedJob do
       before do
         Rails.cache.write(cache_key, ::Feedjira::Feed.parse(rss_body.gsub('Mon, 22 May 2017', 'Tue, 23 May 2017')))
       end
-      context 'when DownloadRemoteMediaObjectJob IS defined' do
-        before do
-          class DownloadRemoteMediaObjectJob < ActiveJob::Base
-            def perform(_url)
-              # Does nothing in test
-            end
-          end
-        end
-
-        after do
-          Object.send(:remove_const, :DownloadRemoteMediaObjectJob)
-        end
-        it 'should queue DownloadRemoteMediaObjectJob' do
-          expect { described_class.perform_now(url, true) }.to have_enqueued_job(DownloadRemoteMediaObjectJob)
-        end
-      end
-    end
-
-    context 'when the feed was NOT updated' do
-      before do
-        Rails.cache.write(cache_key, ::Feedjira::Feed.parse(rss_body))
-      end
-      context 'when DownloadRemoteMediaObjectJob IS defined' do
-        before do
-          class DownloadRemoteMediaObjectJob < ActiveJob::Base
-            def perform(_url)
-              # Does nothing in test
-            end
-          end
-        end
-
-        after do
-          Object.send(:remove_const, :DownloadRemoteMediaObjectJob)
-        end
-        it 'should queue DownloadRemoteMediaObjectJob' do
-          expect { described_class.perform_now(url, true) }.to_not have_enqueued_job(DownloadRemoteMediaObjectJob)
-        end
+      it 'should set @download_media to true' do
+        expect { subject.perform(url, true) }.to change { Rails.cache.fetch(cache_key) }
+        expect(subject.instance_variable_get(:@download_media)).to eq(true)
       end
     end
   end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Europeana
-  module FeedJobs
+  module Feeds
     ##
     # Models an image extracted from a remote RSS feed
     class FeedEntryImage
@@ -20,22 +20,8 @@ module Europeana
         @feed_entry = feed_entry
       end
 
-      def thumbnail_url
-        thumbnail = media_object.present? ? media_object : nil
-        thumbnail.respond_to?(:file) ? thumbnail.file.url(:medium) : thumbnail
-      end
-
-      def media_object
-        @media_object ||= begin
-          return find_url_in_feed_entry unless defined? ::MediaObject
-          return if media_object_url.nil?
-          hash = ::MediaObject.hash_source_url(media_object_url)
-          ::MediaObject.find_by_source_url_hash(hash)
-        end
-      end
-
-      def media_object_url
-        @media_object_url ||= find_url_in_feed_entry
+      def url
+        @url ||= find_url_in_feed_entry
       end
 
       protected

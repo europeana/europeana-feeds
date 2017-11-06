@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Europeana
-  module FeedJobs
+  module Feeds
     module FeedHelper
       def feed_entries(url)
         feed = cached_feed(url)
@@ -15,11 +15,6 @@ module Europeana
         end
       end
 
-      # entry [Feedjira::Parser::RSSEntry]
-      def feed_entry_thumbnail_url(entry)
-        Europeana::FeedJobs::FeedEntryImage.new(entry).thumbnail_url
-      end
-
       ##
       # Tries to retrieve a cached feed and formats it for display.
       def feed_items_for(url)
@@ -30,10 +25,6 @@ module Europeana
         cached_feed.entries.map do |item|
           {
             url: CGI.unescapeHTML(item.url),
-            img: {
-              src: feed_entry_thumbnail_url(item),
-              alt: item.title
-            },
             title: item.title,
             date: I18n.l(item.published, format: :short).gsub(/\s00:00$/, ''),
             published: item.published,
