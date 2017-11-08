@@ -14,27 +14,6 @@ module Europeana
           Rails.cache.fetch("feed/#{url}")
         end
       end
-
-      ##
-      # Tries to retrieve a cached feed and formats it for display.
-      def feed_items_for(url)
-        cached_feed = cached_feed(url)
-
-        return [] if cached_feed.blank? || cached_feed.entries.blank?
-
-        cached_feed.entries.map do |item|
-          {
-            url: CGI.unescapeHTML(item.url),
-            title: item.title,
-            date: I18n.l(item.published, format: :short).gsub(/\s00:00$/, ''),
-            published: item.published,
-            excerpt: {
-              short: strip_tags(CGI.unescapeHTML(item.summary.to_s))
-            },
-            type: detect_feed_type(feed)
-          }
-        end
-      end
     end
   end
 end
