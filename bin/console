@@ -2,6 +2,8 @@
 
 #!/usr/bin/env ruby
 
+require 'irb'
+require 'irb/completion' # easy tab completion
 require 'bundler/setup'
 require 'europeana/feeds'
 
@@ -12,5 +14,5 @@ require 'europeana/feeds'
 # require 'pry'
 # Pry.start
 
-require 'irb'
+
 IRB.start(__FILE__)

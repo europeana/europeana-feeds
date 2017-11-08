@@ -2,6 +2,7 @@
 
 require 'active_job'
 require 'feedjira'
+require 'rails'
 require 'europeana/feeds/engine'
 
 module Europeana

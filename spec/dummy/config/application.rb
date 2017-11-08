@@ -8,7 +8,7 @@ require 'action_view/railtie'
 require 'sprockets/railtie'
 
 Bundler.require(*Rails.groups)
-require 'europeana/feed_jobs'
+require 'europeana/feeds'
 
 module Dummy
   class Application < Rails::Application

@@ -13,7 +13,7 @@ RSpec.describe Europeana::Feeds::FetchJob do
 
   let(:url) { 'http://blog.europeana.eu/all' }
   let(:rss_body) do
-    <<~END
+    <<~FEEDXML
       <?xml version="1.0"?>
       <rss version="2.0">
       <channel>
@@ -30,7 +30,7 @@ RSpec.describe Europeana::Feeds::FetchJob do
         </item>
       </channel>
       </rss>
-    END
+    FEEDXML
   end
   subject { described_class.new }
 
