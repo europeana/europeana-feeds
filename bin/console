@@ -1,6 +1,6 @@
-# frozen_string_literal: true
-
 #!/usr/bin/env ruby
+
+# frozen_string_literal: true
 
 require 'irb'
 require 'irb/completion' # easy tab completion
@@ -13,6 +13,5 @@ require 'europeana/feeds'
 # (If you use this, don't forget to add pry to your Gemfile!)
 # require 'pry'
 # Pry.start
-
 
 IRB.start(__FILE__)

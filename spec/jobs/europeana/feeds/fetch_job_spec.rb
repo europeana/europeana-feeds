@@ -52,18 +52,6 @@ RSpec.describe Europeana::Feeds::FetchJob do
     expect(cached.feed_url).to eq(url)
   end
 
-  context 'when the download_media argument is passed as true' do
-    context 'when the feed was updated' do
-      before do
-        Rails.cache.write(cache_key, ::Feedjira::Feed.parse(rss_body.gsub('Mon, 22 May 2017', 'Tue, 23 May 2017')))
-      end
-      it 'should set @download_media to true' do
-        expect { subject.perform(url, true) }.to change { Rails.cache.fetch(cache_key) }
-        expect(subject.instance_variable_get(:@download_media)).to eq(true)
-      end
-    end
-  end
-
   context 'when the feed was previously cached' do
     before do
       Rails.cache.write(cache_key, ::Feedjira::Feed.parse(rss_body))

@@ -5,9 +5,8 @@ module Europeana
     class FetchJob < ActiveJob::Base
       queue_as :feeds
 
-      def perform(url, download_media = false)
+      def perform(url)
         @url = url
-        @download_media = download_media
 
         @feed = ::Feedjira::Feed.fetch_and_parse(@url)
 

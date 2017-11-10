@@ -15,7 +15,7 @@ module Europeana
         { tag: :video, attr: :poster }
       ].freeze
 
-      # @param entry [Feedjira::Parser::RSSEntry]
+      # @param feed_entry [Feedjira::Parser::RSSEntry]
       def initialize(feed_entry)
         @feed_entry = feed_entry
       end
