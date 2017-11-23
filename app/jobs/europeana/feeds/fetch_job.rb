@@ -20,16 +20,17 @@ module Europeana
       end
 
       def modified?(cached_feed)
-        return true if cached_feed.blank?
-
-        if @feed.last_built
-          return cached_feed.last_built != @feed.last_built
+        if cached_feed.blank?
+          true
+        elsif @feed.last_built
+          cached_feed.last_built != @feed.last_built
         elsif @feed.last_modified
-          return cached_feed.last_modified != @feed.last_modified
+          cached_feed.last_modified != @feed.last_modified
+        else
+          # When the feed doesn't specify a build date or modified date,
+          # assume it's been modified.
+          true
         end
-        # When the feed doesn't specify a build date or modified date,
-        # assume it's been modified.
-        true
       end
     end
   end
