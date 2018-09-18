@@ -7,7 +7,7 @@ require 'simplecov'
 # Generate Simplecov report
 SimpleCov.start
 
-require File.expand_path('../dummy/config/environment.rb', __FILE__)
+require File.expand_path('dummy/config/environment.rb', __dir__)
 require 'rspec/rails'
 require 'webmock_helper'
 

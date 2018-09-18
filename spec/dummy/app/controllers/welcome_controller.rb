@@ -1,9 +1,7 @@
+# frozen_string_literal: true
+
 ##
 # Static pages controller
 class WellcomeController < ApplicationController
-
-  def index
-
-  end
-
+  def index; end
 end

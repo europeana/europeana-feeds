@@ -6,14 +6,12 @@ source 'https://rubygems.org'
 gemspec
 
 group :test, :develop do
-  gem 'rails', '> 4.2', '< 6'
   gem 'rubocop', '0.53', require: false
 end
 
 group :develop do
   gem 'brakeman'
 end
-
 
 group :test do
   gem 'simplecov', require: false
