@@ -2,8 +2,10 @@
 
 ENV['RAILS_ENV'] ||= 'test'
 
-require 'coveralls'
-Coveralls.wear! unless Coveralls.will_run?.nil?
+require 'simplecov'
+
+# Generate Simplecov report
+SimpleCov.start
 
 require File.expand_path('../dummy/config/environment.rb', __FILE__)
 require 'rspec/rails'

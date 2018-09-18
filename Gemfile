@@ -2,7 +2,19 @@
 
 source 'https://rubygems.org'
 
-git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
-
 # Specify your gem's dependencies in europeana-feeds.gemspec
 gemspec
+
+group :test, :develop do
+  gem 'rails', '> 4.2', '< 6'
+  gem 'rubocop', '0.53', require: false
+end
+
+group :develop do
+  gem 'brakeman'
+end
+
+
+group :test do
+  gem 'simplecov', require: false
+end
