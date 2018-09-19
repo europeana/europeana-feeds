@@ -79,21 +79,21 @@ RSpec.describe Europeana::Feeds::FetchJob do
     context 'when the feed does NOT have a build date' do
       let(:rss_body) do
         <<~FEEDXML
-      <?xml version="1.0"?>
-      <rss version="2.0">
-      <channel>
-        <title>Example Channel</title>
-        <link>http://example.com/</link>
-        <description>My example channel</description>
-        <item>
-           <title>Example item</title>
-           <link>http://example.com/item</link>
-           <description>About the example item...</description>
-           <content:encoded><![CDATA[<img src="http://www.example.com/image.png"/>]]></content:encoded>
-           <pubDate>Mon, 22 May 2017 00:00:00 +0000</pubDate>
-        </item>
-      </channel>
-      </rss>
+          <?xml version="1.0"?>
+          <rss version="2.0">
+          <channel>
+            <title>Example Channel</title>
+            <link>http://example.com/</link>
+            <description>My example channel</description>
+            <item>
+               <title>Example item</title>
+               <link>http://example.com/item</link>
+               <description>About the example item...</description>
+               <content:encoded><![CDATA[<img src="http://www.example.com/image.png"/>]]></content:encoded>
+               <pubDate>Mon, 22 May 2017 00:00:00 +0000</pubDate>
+            </item>
+          </channel>
+          </rss>
         FEEDXML
       end
 

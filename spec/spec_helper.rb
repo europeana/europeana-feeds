@@ -2,10 +2,12 @@
 
 ENV['RAILS_ENV'] ||= 'test'
 
-require 'coveralls'
-Coveralls.wear! unless Coveralls.will_run?.nil?
+require 'simplecov'
 
-require File.expand_path('../dummy/config/environment.rb', __FILE__)
+# Generate Simplecov report
+SimpleCov.start
+
+require File.expand_path('dummy/config/environment.rb', __dir__)
 require 'rspec/rails'
 require 'webmock_helper'
 
