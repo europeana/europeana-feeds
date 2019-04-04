@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.summary       = 'This gem retrieves rss feeds and caches their contents'
   spec.description   = 'Rails Engine to retrieve and cache rss feeds'
   spec.homepage      = 'https://github.org/europeana/europeana-feeds'
-  spec.license       = 'EUPL-1.1'
+  spec.license       = 'EUPL-1.2'
 
   spec.files = Dir['{app,bin,lib}/**/*', '.rubocop.yml', 'Gemfile', 'LICENSE.md', 'README.md']
 

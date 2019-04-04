@@ -8,6 +8,6 @@ Rails Engine to retrieve and manage cached versions of RSS feeds.
 Simply add "europeana-feeds" to your Rails app's Gemfile and `bundle`.
 
 ## License
-Licensed under the EUPL V.1.1.
+Licensed under the EUPL v1.2.
 
 For full details, see [LICENSE.md](LICENSE.md).
